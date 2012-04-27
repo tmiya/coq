@@ -1,0 +1,98 @@
+Fsetoid_group
+R50 Coq.Relations.Relation_Definitions <> <> lib
+R71 Coq.Setoids.Setoid <> <> lib
+R78 Coq.Classes.Morphisms <> <> lib
+R104 Coq.Arith.Arith <> <> lib
+R110 Coq.omega.Omega <> <> lib
+ind 173 <> Z'
+constr 187 <> mkZ'
+R208 setoid_group <> Z' ind
+R201 Coq.Init.Datatypes <> nat ind
+R194 Coq.Init.Datatypes <> nat ind
+def 224 <> eq'
+R234 setoid_group <> Z' ind
+R272 setoid_group <> mkZ' constr
+R285 setoid_group <> mkZ' constr
+R306:308 Coq.Init.Logic <> :type_scope:x_'='_x not
+R303:303 Coq.Init.Peano <> :nat_scope:x_'+'_x not
+R311:311 Coq.Init.Peano <> :nat_scope:x_'+'_x not
+def 335 <> minus'
+R344 setoid_group <> Z' ind
+R370 setoid_group <> mkZ' constr
+R382 setoid_group <> mkZ' constr
+def 410 <> plus'
+R422 setoid_group <> Z' ind
+R453 setoid_group <> mkZ' constr
+R466 setoid_group <> mkZ' constr
+R482 setoid_group <> mkZ' constr
+R498:498 Coq.Init.Peano <> :nat_scope:x_'+'_x not
+R490:490 Coq.Init.Peano <> :nat_scope:x_'+'_x not
+prf 544 <> refl_eq'
+R555 Coq.Relations.Relation_Definitions <> reflexive def
+R567 setoid_group <> eq' def
+prf 657 <> sym_eq'
+R667 Coq.Relations.Relation_Definitions <> symmetric def
+R679 setoid_group <> eq' def
+prf 808 <> trans_eq'
+R820 Coq.Relations.Relation_Definitions <> transitive def
+R833 setoid_group <> eq' def
+R1049 setoid_group <> eq' def
+R1046 setoid_group <> Z' ind
+R1049 setoid_group <> eq' def
+R1046 setoid_group <> Z' ind
+R1077 setoid_group <> refl_eq' thm
+R1049 setoid_group <> eq' def
+R1046 setoid_group <> Z' ind
+R1107 setoid_group <> sym_eq' thm
+R1049 setoid_group <> eq' def
+R1046 setoid_group <> Z' ind
+R1140 setoid_group <> trans_eq' thm
+R1049 setoid_group <> eq' def
+R1046 setoid_group <> Z' ind
+R1077 setoid_group <> refl_eq' thm
+R1107 setoid_group <> sym_eq' thm
+R1140 setoid_group <> trans_eq' thm
+R1224 setoid_group <> minus' def
+R1250:1254 Coq.Classes.Morphisms ProperNotations :signature_scope:x_'==>'_x not
+R1247 setoid_group <> eq' def
+R1255 setoid_group <> eq' def
+R1448 setoid_group <> plus' def
+R1473:1477 Coq.Classes.Morphisms ProperNotations :signature_scope:x_'==>'_x not
+R1470 setoid_group <> eq' def
+R1481:1485 Coq.Classes.Morphisms ProperNotations :signature_scope:x_'==>'_x not
+R1478 setoid_group <> eq' def
+R1486 setoid_group <> eq' def
+rec 1703 <> Group
+proj 1769 <> equiv
+proj 1796 <> equiv_dec
+proj 1854 <> inv_mor
+proj 1916 <> op_mor
+proj 2008 <> op_assoc
+proj 2078 <> left_unit
+proj 2124 <> right_unit
+proj 2171 <> left_inv
+proj 2222 <> right_inv
+R1777 Coq.Classes.RelationClasses <> Equivalence class
+R1827:1827 Coq.Init.Specif <> :type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R1834:1838 Coq.Init.Specif <> :type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R1848:1848 Coq.Init.Specif <> :type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R1839:1840 Coq.Init.Logic <> :type_scope:'~'_x not
+R1847:1847 Coq.Init.Logic <> :type_scope:'~'_x not
+inst 2298 <> Z'_group
+R2309 setoid_group <> Group class
+R2337 setoid_group <> plus' def
+R2330 setoid_group <> minus' def
+R2320 setoid_group <> mkZ' constr
+R2327 Coq.Init.Datatypes <> O constr
+R2325 Coq.Init.Datatypes <> O constr
+R2315 setoid_group <> eq' def
+R2357 setoid_group <> Build_Group constr
+R2357 setoid_group <> Build_Group constr
+R2404 setoid_group <> Z'_setoid inst
+R2404 setoid_group <> Z'_setoid inst
+R2507 Coq.Arith.Peano_dec <> eq_nat_dec thm
+R2507 Coq.Arith.Peano_dec <> eq_nat_dec thm
+R2551 setoid_group <> minus'_mor def
+R2551 setoid_group <> minus'_mor def
+R2601 setoid_group <> plus'_mor def
+R2601 setoid_group <> plus'_mor def
