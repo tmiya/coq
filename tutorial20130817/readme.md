@@ -1,0 +1,1 @@
+# 2013/08/13 Coq'Art読書会チュートリアル資料## 内容* coqart_20130817.v : チュートリアルハンズオン用Coqファイル * coqart_20130817_answer.v : 上記の解答* coqart_20130817.pdf : チュートリアルプレゼン用資料* coqcheatsheet.pdf : Coqのtactic早見表
