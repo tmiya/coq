@@ -55,7 +55,11 @@ Check (1::2::nil).
 Check list_ind.
 
 (* Define append function *)
-Fixpoint append{A:Type}(xs ys:list A):=match xs with| nil => ys| x::xs' => x::(append xs' ys)end.
+Fixpoint append{A:Type}(xs ys:list A):=
+match xs with
+| nil => ys
+| x::xs' => x::(append xs' ys)
+end.
 
 (* Evaluation *)
 Eval compute in (append (1::2::nil) (3::4::nil)).
@@ -101,39 +105,24 @@ Eval compute in (reverse (reverse (1::2::3::nil))).
 Lemma append_right_nil: forall (A:Type)(xs:list A),
   append xs nil = xs.
 Proof.
-induction xs.
- auto.
- simpl. erewrite IHxs. auto.
+????
 Qed.
 
 Lemma append_append : forall (A:Type)(xs ys zs:list A),
   append (append xs ys) zs = append xs (append ys zs).
 Proof.
-induction xs.
- simpl. intros; auto.
-
- simpl. intros. erewrite IHxs. auto.
+????
 Qed. 
 
 Lemma reverse_append : forall (A:Type)(xs ys:list A),
   reverse (append xs ys) = append (reverse ys) (reverse xs).
 Proof.
-induction xs.
- simpl. intro.
- erewrite append_right_nil. auto.
-
- simpl. intro ys.
- erewrite IHxs.
- erewrite append_append.
- auto.
+????
 Qed.
 
 Theorem reverse_reverse: forall (A:Type)(xs:list A),
   reverse (reverse xs) = xs.
 Proof.
-induction xs.
- simpl. auto.
- simpl. erewrite reverse_append. erewrite IHxs.
- simpl. auto.
+????
 Qed.
 
