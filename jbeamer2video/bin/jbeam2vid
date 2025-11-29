@@ -1,0 +1,63 @@
+while getopts f:n:v: flag
+do
+    case "${flag}" in
+        f) file=${OPTARG};;
+        n) narrator=${OPTARG};;
+        v) voice=${OPTARG};;
+    esac
+done
+if [ "$file" = "" ];
+then
+   echo "usage jbeam2vid [-n narrator -v voice] -f filename";
+   exit
+fi
+if [ "$narrator" = "" ];
+then
+   narrator="Lisa";
+fi
+if [ "$voice" = "" ];
+then
+   voice="2";
+fi
+echo "file: $file";
+echo "Narrator: $narrator";
+echo "Voice: $voice";
+base="${file%.*}"
+echo "Base: $base";
+
+rm frames/*
+mkdir -p frames
+rm vids/*
+mkdir -p vids
+# rm concatlist.txt
+lualatex --interaction=batchmode "\def\voice{$voice}\def\narrator{$narrator}\input{$base.tex}"
+lualatex --interaction=batchmode "\def\voice{$voice}\def\narrator{$narrator}\input{$base.tex}"
+##dvipdfmx "$base.dvi"
+echo "jpdfannots.py starts"
+jpdfannots.py "$base.pdf" -o frames/annots.out
+cat frames/annots.out
+jannots2audio.py $narrator $voice frames/annots.out
+ffmpeg -hide_banner -loglevel error \
+  -i "clips/$narrator.mp4" -vf scale=160:120 "frames/$narrator.mp4"
+gs -dSAFER -dQUIET -dNOPLATFONTS -sDEVICE=pngalpha -sOutputFile=frames/frame%03d.png -dNOPAUSE -dBATCH -r144 $base.pdf
+for entry in $(basename -a -s .png frames/frame*.png)
+do
+  echo "mixing ......... $entry"
+  ffmpeg -hide_banner -loglevel error \
+  -stream_loop -1 -i frames/$narrator.mp4 -i frames/$entry.wav -shortest frames/$entry.mp4
+  ffmpeg -hide_banner -loglevel error \
+  -i frames/$entry.png -i frames/$entry.mp4 \
+  -filter_complex "overlay=x=(main_w-overlay_w-10):y=(main_h-overlay_h-10)" \
+  -map 1:a \
+  -c:v libx264 -crf 18 -pix_fmt yuv420p \
+  -c:a copy \
+  vids/$entry.mp4
+done
+cd vids
+for f in *.mp4; do echo "file '$f'" >> concatlist.txt; done
+cd ..
+echo "Narrator: $narrator";
+ffmpeg -hide_banner -loglevel error \
+  -f concat -safe 0 -i ./vids/concatlist.txt -c copy -y "./${base}_${narrator}_${voice}.mp4"
+handbrakecli --verbose=0 -i "${base}_${narrator}_${voice}.mp4" -o "${base}_${narrator}_${voice}.mov" > /dev/null
+echo "All done, exiting ..."

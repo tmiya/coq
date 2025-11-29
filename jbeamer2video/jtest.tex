@@ -1,0 +1,24 @@
+\documentclass[unicode,12pt]{beamer}% 'unicode'が必要
+\usepackage[whole,autotilde]{bxcjkjatype}% pdfLaTeXで日本語したい
+\usepackage{minijs}% min10ヤダ
+\renewcommand{\kanjifamilydefault}{\gtdefault}% 既定をゴシック体に
+
+\begin{document}
+
+\begin{frame}{スライド1: タイトル}
+    このスライドでは、Beamerの利点を説明します。  % これがTTSで読み上げられる
+
+\pdfnarration{
+このスライド1では、Beamerの利点を説明します。
+}
+\end{frame}
+
+\begin{frame}{スライド2: 内容}
+    詳細な内容をここに記述。自動で音声生成されます。
+\pdfnarration{
+このスライド2では、詳細な内容をここに記述します。
+}
+\end{frame}
+
+\end{document}
+
