@@ -1,0 +1,61 @@
+\documentclass[unicode,12pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語したい
+\usepackage[ipaex]{luatexja-preset}% IPAexフォントしたい
+\renewcommand{\kanjifamilydefault}{\gtdefault}% 既定をゴシック体に
+
+\usepackage[author={narration}]{pdfcomment}
+\definestyle{note}{icon=Insert,color=red} 
+\newcommand{\pdfnarration}[1]{%
+\onslide*<\value{beamerpauses}>{\pdfmargincomment[style=note,author=narration]{#1}}%
+}
+
+\title{日本語Beamer動作確認}
+\author{tmiya}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{日本語がちゃんと表示されるか確認}
+    こんにちは！このスライドは日本語です。
+
+    \alert{赤字の部分もちゃんと見えてますか？}
+
+    次のページでは長い文章でVOICEVOXの読み上げテストをします。
+\pdfnarration{
+こんにちは！このスライドは日本語です。
+次のページでは長い文章でVOICEVOXの読み上げテストをします。
+}
+\end{frame}
+
+\begin{frame}{VOICEVOX読み上げテスト用文章}
+    みなさん、こんにちは！今日はBeamerで作ったスライドに自動で音声を付ける方法を紹介します。
+
+    まず、このtexファイルをlualatexでコンパイルすると、注釈付きのPDFファイルが生成されます。
+    ついで jbeam2vid スクリプトが PDF から注釈を抽出し、VOICEVOX を使って日本語音声を生成します。
+    そして最後に PDF と音声ファイルを組み合わせて動画が生成されます。
+
+    VOICEVOXを使って「ずんだもん」や「四国めたん」の声で音声を生成できますし、
+    日本語の句読点・カタカナ・漢字もすべて完璧に読み上げられます！
+    例：「こんにちは、世界！」「ぱちぱちぱち」「わーい！」
+\pdfnarration{
+みなさん、こんにちは！今日はBeamerで作ったスライドに自動で音声を付ける方法を紹介します。
+まず、このtexファイルをlualatexでコンパイルすると、注釈付きのPDFファイルが生成されます。
+ついで jbeam2vid スクリプトが PDF から注釈を抽出し、VOICEVOX を使って日本語音声を生成します。
+そして最後に PDF と音声ファイルを組み合わせて動画が生成されます。
+VOICEVOXを使って「ずんだもん」や「四国めたん」の声で音声を生成できますし、
+日本語の句読点・カタカナ・漢字もすべて完璧に読み上げられます！
+例：「こんにちは、世界！」「ぱちぱちぱち」「わーい！」}
+\end{frame}
+
+\begin{frame}{最後}
+    \Huge ご清聴ありがとうございました！
+\pdfnarration{
+ご清聴ありがとうございました！
+}
+\end{frame}
+
+\end{document}
